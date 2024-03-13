@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All User</title>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+        }
+        th{
+            background-color: yellow;
+        }
+        td{
+            margin: 20px;
+            color: black;
+            background-color: rgb(196, 198, 198);
+        }
+        body{
+            background-color: rgb(250, 247, 243);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>password</th>
+            <th>email</th>
+        </tr>
+        <% for(user of users) { %>
+            <tr class="user">
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.password %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <form action="/user/<%=user.id%>/edit" method="get">
+                        <button>edit username</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/user/<%=user.id%>/delete">
+                      <button>Delete</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form method="get" action="/user/<%=user.id%>/new">
+                      <button>add new</button>
+                    </form>
+                  </td>
+            </tr>    
+        <% } %>   
+    </table>
+</body>
+</html>
+
